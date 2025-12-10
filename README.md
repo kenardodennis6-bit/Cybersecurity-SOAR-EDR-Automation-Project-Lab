@@ -68,5 +68,4 @@ The workflow branches based on the analyst’s response.
   - The endpoint **was NOT isolated**
   - A reminder to **investigate the activity further**
 
----
 
