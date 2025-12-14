@@ -138,6 +138,33 @@ This step served two purposes in my SOAR–EDR workflow:
 
 Overall, this helped confirm that the environment could correctly surface high-value security signals, giving me a solid foundation for building detections, alerts, and SOAR playbooks around credential-theft techniques.
 
+---
+### Endpoint Telemetry Captured in LimaCharlie After Executing LaZagne
+![LimaCharlie_laZagne_events](https://imgur.com/DQaIGfh.png)
+
+After running LaZagne on my Windows endpoint to generate realistic credential-theft activity, I moved into LimaCharlie to verify that the EDR agent was correctly capturing and forwarding telemetry. The screenshot above shows the event timeline filtered for activity related to the LaZagne execution.
+
+LimaCharlie recorded a full chain of process events, including:
+- The initial launch of `LaZagne.exe`
+- Its child process activity (e.g., calls to `cmd.exe`)
+- File access events as the tool attempted to read credential-related system files
+- Hash and signature metadata for each process involved
+
+What stood out in this capture is the clear parent/child relationship between the unsigned `LaZagne.exe` binary and the subsequent system processes it spawned. The event details panel shows the command-line arguments, file paths, cryptographic hashes, and signature status, which are exactly the indicators analysts rely on when investigating suspicious behavior.
+
+This step allowed me to confirm that:
+1. **The endpoint agent was operating correctly**  
+   All process activity tied to LaZagne was logged with granular detail.
+
+2. **The telemetry included enough context for detection engineering**  
+   With signed/unsigned file indicators, parent-process lineage, and hash values, I was able to trace the execution flow end-to-end.
+
+3. **The environment could support automated response workflows**  
+   Since LimaCharlie exposes detection-grade event data, I could start building rules and SOAR actions to flag or contain credential-dumping activity.
+
+Overall, this validated that my EDR pipeline is able to surface the type of high-value behavioral events that defenders need when dealing with credential-harvesting techniques used by real attackers.
+
+
 
 
 
