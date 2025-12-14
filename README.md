@@ -120,5 +120,24 @@ After deploying the Windows VM and installing the LimaCharlie agent, the endpoin
 
 Seeing the sensor come online validated that the connection between the VM and the LimaCharlie cloud was fully established. This meant the environment was now ready for monitoring, threat detection, and automated response workflows. With the sensor live, I could start collecting real-time system activity, issuing remote commands, and building out the SOAR/EDR pipeline for the rest of the project.
 
+---
+### Credential Extraction & EDR Visibility Testing Using LaZagne
+![laZagne_execution](https://imgur.com/5MGQ1nR.png)
+
+To validate that my EDR pipeline could detect real-world credential harvesting behavior, I executed **LaZagne** inside my Windows analysis VM using PowerShell. LaZagne is a post-exploitation tool commonly used by attackers to recover stored credentials from browsers, the system registry, DPAPI, and other local sources.
+
+After downloading the executable, I ran it directly from the VM’s `Downloads` directory. The screenshot shows LaZagne successfully enumerating the system’s masterkeys, decrypting DPAPI secrets, and dumping password hashes for local accounts such as `Administrator`, `Guest`, and `DefaultAccount`. It also extracted LSA secrets and other credential artifacts stored in Windows.
+
+This step served two purposes in my SOAR–EDR workflow:
+
+1. **Simulating a realistic credential-theft scenario**  
+   By running an actual credential enumeration tool, I generated telemetry that mimics early-stage attacker activity. This allowed me to observe how the endpoint agent reports events such as process execution, command-line arguments, and file access patterns.
+
+2. **Testing my detection and response pipeline**  
+   With the agent connected to my EDR backend, I could verify that suspicious activity—like credential dumping—was being logged and was available for automated or manual response actions.
+
+Overall, this helped confirm that the environment could correctly surface high-value security signals, giving me a solid foundation for building detections, alerts, and SOAR playbooks around credential-theft techniques.
+
+
 
 
