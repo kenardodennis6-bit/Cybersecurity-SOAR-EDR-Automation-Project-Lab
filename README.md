@@ -79,6 +79,8 @@ I selected a Windows image for the operating system and chose a U.S. region (Mia
 Using a cloud-hosted endpoint provides a controlled and isolated environment where I can safely run commands, generate test incidents, and observe how detections move through the system—from the endpoint to the SIEM and ultimately into the automated SOAR playbooks built later in the project.
 
 ---
+![Firewall Deployment](https://imgur.com/W39UMYh.png)
+
 ### Configuring the Firewall for the SOAR–EDR Endpoint
 
 To secure the cloud-hosted endpoint, I created a dedicated firewall group in Vultr and applied a set of inbound rules designed to limit exposure while still allowing the access I needed for remote administration and testing. I named the group **SOAR-EDR-Firewall** and linked it directly to the Windows instance used in this project.
@@ -91,5 +93,15 @@ I configured the firewall to explicitly allow only two types of inbound traffic:
 Everything else is blocked by default, with a final rule that drops any unspecified inbound traffic. This approach keeps the attack surface small and ensures the instance is only reachable through the intended management channels.
 
 Setting up the firewall early in the project helped ensure that the environment stays isolated and protected as I build out the rest of the SOAR–EDR pipeline.
+
+---
+![LimaCharlie Organization](https://imgur.com/AhQ60J6.png)
+### Setting Up the LimaCharlie Organization and Installation Key
+
+To begin integrating endpoint telemetry into the SOAR–EDR pipeline, I created a dedicated organization in LimaCharlie named **Ken-SOAR-EDR**. This organization acts as the central workspace for managing sensors, collecting event data, and configuring detection and response capabilities.
+
+After creating the organization, I generated an **Installation Key**, which is required for securely enrolling endpoints into the LimaCharlie platform. This key allows the Windows VM in my lab environment to register as a managed sensor, enabling it to send real-time telemetry such as process events, network activity, and security signals back to the cloud.
+
+By setting up the organization and installation key early, I established the foundation for connecting the endpoint to the broader detection and automation workflow that supports the SOAR–EDR environment.
 
 
