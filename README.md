@@ -1,12 +1,12 @@
 # Cybersecurity-SOAR-EDR-Automation-Project-Lab
 
 ## Objective
-[Brief Objective - Remove this afterwards]
+
 
 The Detection Lab project aimed to establish a controlled environment for simulating and detecting cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system, generating test telemetry to mimic real-world attack scenarios. This hands-on experience was designed to deepen understanding of network security, attack patterns, and defensive strategies.
 
 ### Skills Learned
-[Bullet Points - Remove this afterwards]
+
 
 - Advanced understanding of SIEM concepts and practical application.
 - Proficiency in analyzing and interpreting network logs.
@@ -68,9 +68,8 @@ The workflow branches based on the analyst’s response.
   - The endpoint **was NOT isolated**
   - A reminder to **investigate the activity further**
 ---
-![Cloud VM Endpoint Deployment](https://imgur.com/q027G7S.png)
-
 ### Deploying the Endpoint VM in Vultr
+![Cloud VM Endpoint Deployment](https://imgur.com/q027G7S.png)
 
 To begin building out the SOAR–EDR lab environment, I deployed a dedicated cloud-based Windows endpoint using Vultr. I provisioned a compute instance and configured it as **MyDFIR-SOAR-EDR**, which serves as the primary workstation for simulating attacker activity and validating detection and response workflows.
 
@@ -79,9 +78,8 @@ I selected a Windows image for the operating system and chose a U.S. region (Mia
 Using a cloud-hosted endpoint provides a controlled and isolated environment where I can safely run commands, generate test incidents, and observe how detections move through the system—from the endpoint to the SIEM and ultimately into the automated SOAR playbooks built later in the project.
 
 ---
-![Firewall Deployment](https://imgur.com/W39UMYh.png)
-
 ### Configuring the Firewall for the SOAR–EDR Endpoint
+![Firewall Deployment](https://imgur.com/W39UMYh.png)
 
 To secure the cloud-hosted endpoint, I created a dedicated firewall group in Vultr and applied a set of inbound rules designed to limit exposure while still allowing the access I needed for remote administration and testing. I named the group **SOAR-EDR-Firewall** and linked it directly to the Windows instance used in this project.
 
@@ -95,8 +93,8 @@ Everything else is blocked by default, with a final rule that drops any unspecif
 Setting up the firewall early in the project helped ensure that the environment stays isolated and protected as I build out the rest of the SOAR–EDR pipeline.
 
 ---
-![LimaCharlie Organization](https://imgur.com/AhQ60J6.png)
 ### Setting Up the LimaCharlie Organization and Installation Key
+![LimaCharlie Organization](https://imgur.com/AhQ60J6.png)
 
 To begin integrating endpoint telemetry into the SOAR–EDR pipeline, I created a dedicated organization in LimaCharlie named **Ken-SOAR-EDR**. This organization acts as the central workspace for managing sensors, collecting event data, and configuring detection and response capabilities.
 
