@@ -101,5 +101,15 @@ To begin integrating endpoint telemetry into the SOAR–EDR pipeline, I created 
 After creating the organization, I generated an **Installation Key**, which is required for securely enrolling endpoints into the LimaCharlie platform. This key allows the Windows VM in my lab environment to register as a managed sensor, enabling it to send real-time telemetry such as process events, network activity, and security signals back to the cloud.
 
 By setting up the organization and installation key early, I established the foundation for connecting the endpoint to the broader detection and automation workflow that supports the SOAR–EDR environment.
+---
+### Installing the LimaCharlie Agent on the Endpoint
+![LimaCharlie installation](.png)
+
+With the organization and installation key configured in LimaCharlie, the next step was to install the LimaCharlie agent on the Windows endpoint. I used PowerShell to execute the installation command provided by the platform, which securely registered the endpoint with my **Ken-SOAR-EDR** organization.
+
+Once the installer ran, the agent successfully initialized and connected to the LimaCharlie cloud, confirming that the endpoint was now actively reporting telemetry data. This process established the communication channel needed for collecting real-time event logs, process creation data, and other system-level activities directly from the VM.
+
+By completing this installation, I effectively linked my cloud-based endpoint to the detection and response ecosystem—enabling the future stages of the project, such as alerting, incident investigation, and automated SOAR playbook execution.
+
 
 
