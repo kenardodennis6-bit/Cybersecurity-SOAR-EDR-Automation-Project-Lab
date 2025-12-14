@@ -103,7 +103,7 @@ After creating the organization, I generated an **Installation Key**, which is r
 By setting up the organization and installation key early, I established the foundation for connecting the endpoint to the broader detection and automation workflow that supports the SOAR–EDR environment.
 ---
 ### Installing the LimaCharlie Agent on the Endpoint
-![LimaCharlie installation](.png)
+![LimaCharlie installation](https://imgur.com/emaZReb.png)
 
 With the organization and installation key configured in LimaCharlie, the next step was to install the LimaCharlie agent on the Windows endpoint. I used PowerShell to execute the installation command provided by the platform, which securely registered the endpoint with my **Ken-SOAR-EDR** organization.
 
