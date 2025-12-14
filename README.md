@@ -67,5 +67,29 @@ The workflow branches based on the analyst’s response.
 - Tines sends a Slack message stating:
   - The endpoint **was NOT isolated**
   - A reminder to **investigate the activity further**
+---
+![Cloud VM Endpoint Deployment](https://imgur.com/q027G7S.png)
+
+### Deploying the Endpoint VM in Vultr
+
+To begin building out the SOAR–EDR lab environment, I deployed a dedicated cloud-based Windows endpoint using Vultr. I provisioned a compute instance and configured it as **MyDFIR-SOAR-EDR**, which serves as the primary workstation for simulating attacker activity and validating detection and response workflows.
+
+I selected a Windows image for the operating system and chose a U.S. region (Miami) to maintain low network latency during testing. After configuring the instance, I launched it and verified that it was running successfully. This endpoint will later be equipped with the necessary EDR agent and logging configurations so it can forward telemetry to the rest of the SOAR–EDR pipeline.
+
+Using a cloud-hosted endpoint provides a controlled and isolated environment where I can safely run commands, generate test incidents, and observe how detections move through the system—from the endpoint to the SIEM and ultimately into the automated SOAR playbooks built later in the project.
+
+---
+### Configuring the Firewall for the SOAR–EDR Endpoint
+
+To secure the cloud-hosted endpoint, I created a dedicated firewall group in Vultr and applied a set of inbound rules designed to limit exposure while still allowing the access I needed for remote administration and testing. I named the group **SOAR-EDR-Firewall** and linked it directly to the Windows instance used in this project.
+
+I configured the firewall to explicitly allow only two types of inbound traffic:
+
+- **RDP (TCP 3389)** for managing the Windows endpoint.
+- **SSH (TCP 22)** for situations where secure remote shell access is needed.
+
+Everything else is blocked by default, with a final rule that drops any unspecified inbound traffic. This approach keeps the attack surface small and ensures the instance is only reachable through the intended management channels.
+
+Setting up the firewall early in the project helped ensure that the environment stays isolated and protected as I build out the rest of the SOAR–EDR pipeline.
 
 
