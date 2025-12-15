@@ -164,6 +164,16 @@ This step allowed me to confirm that:
 
 Overall, this validated that my EDR pipeline is able to surface the type of high-value behavioral events that defenders need when dealing with credential-harvesting techniques used by real attackers.
 
+---
+### Custom Detection & Response Rule for LaZagne Activity
+![Limacharlie_D&R_rule](https://imgur.com/zx1ISdT.png)
+
+To extend the visibility I already had in LimaCharlie, I created a custom Detection & Response (D&R) rule focused on identifying credential-dumping behavior on my Windows endpoint. Since LaZagne is a well-known tool used by attackers for credential extraction, I used its execution as a practical example of how to build targeted detections in an EDR environment.
+
+The screenshot above shows the final rule I implemented. The detection logic monitors both new and existing process events and applies a set of conditions to catch activity tied to LaZagne. I designed it to work specifically on Windows hosts and to trigger when the EDR agent observes a process whose file path or command line ends with `LaZagne.exe`. This ensures the rule picks up both direct execution and rename
+
+
+
 
 
 
