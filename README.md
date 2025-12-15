@@ -178,7 +178,7 @@ The screenshot above shows the final rule I implemented. The detection logic mon
 ![Slack_SOAR-EDR_workspace](https://imgur.com/sB1C1c9.png)
 To centralize the alerts coming out of my SOAR-EDR environment, I set up a dedicated Slack workspace specifically for this project. I wanted a clean space where I could route detections, automation outputs, and investigation notes without mixing them into my personal Slack channels.
 
-The screenshot shows the workspace I created, named **MyDFIR-SOAR-EDR**. This workspace acts as the communication hub for the project. Once the workspace was up, I prepared it to receive webhook-based notifications from LimaCharlie so that any high-priority detections—like credential dumping activity or suspicious process execution—would immediately appear in Slack.  
+The screenshot shows the workspace I created, named **MyDFIR-SOAR-EDR**. This workspace acts as the communication hub for the project. Once the workspace was up, I prepared it to receive webhook-based notifications from LimaCharlie so that any high-priority detections, ike credential dumping activity or suspicious process execution, would immediately appear in Slack.  
 
 Having a separate workspace also made it easier to organize channels for different parts of the lab, such as detection alerts, automation logs, and general coordination. This setup mirrors how many teams manage communication during real security operations and helped build a more realistic workflow for the project.
 
