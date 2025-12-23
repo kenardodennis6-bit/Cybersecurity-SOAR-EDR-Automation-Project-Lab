@@ -191,6 +191,16 @@ The screenshot shows the **#alerts** channel immediately after creation. This ch
 
 This setup mirrors how many SOC teams structure their communication, using Slack as a lightweight incident notification system alongside their EDR and SOAR tools. With the channel in place, the environment was ready to receive automated alerts tied to endpoint detections and response actions.
 
+---
+
+### Creating an Automation Story in Tines
+![Tine_story](https://imgur.com/X1CZxw5.png)
+After setting up the SOAR tooling for this project, I created a dedicated **Story** in Tines to serve as the automation layer for security detections and responses. The screenshot shows the initial story titled **“MyDFIR-SOAR Project”**, which acts as the central workflow container for this environment.
+
+In Tines, a story represents the full lifecycle of an automated security process, from receiving alerts, to enrichment, to triggering downstream actions such as notifications or response steps. Creating this story established a structured framework for designing and managing automation logic tied to endpoint detections from the EDR platform.
+
+At this stage, the story was enabled and ready to be expanded with actions and decision logic as alerts are generated. This mirrors how SOAR platforms are commonly used in real SOC environments: starting with a core workflow and iteratively adding integrations, conditions, and response steps as detections mature
+
 
 
 
