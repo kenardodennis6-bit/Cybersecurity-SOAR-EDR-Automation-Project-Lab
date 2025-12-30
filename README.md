@@ -235,5 +235,17 @@ Email notifications provide redundancy and broader visibility, especially for hi
 
 This approach reflects real-world SOC practices, where automated detections are surfaced across different tools to support timely triage and escalation.
 
+---
+### Adding Analyst Decision Control with a User Prompt
+
+To move beyond passive alerting, I enhanced the workflow by adding a **user prompt** that introduces analyst decision-making into the response process. Instead of automatically taking action on every detection, the workflow now pauses and requests human confirmation before proceeding.
+
+When a detection is retrieved through the webhook, the workflow presents a structured prompt to the analyst containing key context, including the alert title, timestamp, affected host, source IP, username, file path, command line, sensor ID, and a direct link to the detection. This information allows the analyst to quickly assess the situation without switching tools.
+
+The prompt asks whether the affected endpoint should be isolated, giving the analyst a clear **Yes or No** decision. This approach mirrors real SOC workflows, where containment actions are validated by a human to reduce the risk of disrupting legitimate activity.
+
+By integrating a user prompt into the automation, the workflow balances speed and control—automating data collection and notification while keeping high-impact response actions under analyst oversight.
+
+
 
 
