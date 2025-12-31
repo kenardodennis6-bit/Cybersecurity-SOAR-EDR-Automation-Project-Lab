@@ -237,6 +237,7 @@ This approach reflects real-world SOC practices, where automated detections are 
 
 ---
 ### Adding Analyst Decision Control with a User Prompt
+![user_prompt](https://imgur.com/zWTGeV6.png)
 
 To move beyond passive alerting, I enhanced the workflow by adding a **user prompt** that introduces analyst decision-making into the response process. Instead of automatically taking action on every detection, the workflow now pauses and requests human confirmation before proceeding.
 
@@ -245,6 +246,18 @@ When a detection is retrieved through the webhook, the workflow presents a struc
 The prompt asks whether the affected endpoint should be isolated, giving the analyst a clear **Yes or No** decision. This approach mirrors real SOC workflows, where containment actions are validated by a human to reduce the risk of disrupting legitimate activity.
 
 By integrating a user prompt into the automation, the workflow balances speed and control—automating data collection and notification while keeping high-impact response actions under analyst oversight.
+
+---
+### Handling Analyst “No” Decisions in the Response Workflow
+
+![user_prompt](https://imgur.com/OdUQEX8.png)
+
+I implemented a conditional branch in the workflow to handle cases where the analyst decides **not** to isolate the endpoint. When the user prompt returns a **“No”** response, the workflow follows a separate path that avoids taking any containment action on the host.
+
+Instead of isolating the machine, this branch sends a message to Slack documenting the analyst’s decision. The notification confirms that the alert was reviewed and that isolation was intentionally declined, helping maintain visibility and accountability within the security team.
+
+This design ensures that high-impact actions are never taken blindly. It preserves normal business operations while still capturing decision context and maintaining an audit trail of how alerts were handled. The workflow reflects real-world SOC practices where not every detection warrants containment, but every decision should be tracked and communicated.
+
 
 
 
