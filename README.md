@@ -258,7 +258,16 @@ Instead of isolating the machine, this branch sends a message to Slack documenti
 
 This design ensures that high-impact actions are never taken blindly. It preserves normal business operations while still capturing decision context and maintaining an audit trail of how alerts were handled. The workflow reflects real-world SOC practices where not every detection warrants containment, but every decision should be tracked and communicated.
 
+---
+## Automated Endpoint Isolation (Analyst-Approved Response)
 
+In this part of the lab, I built a response path that runs when an analyst chooses **“Yes”** at the decision prompt. This workflow ties together **LimaCharlie (EDR)**, **Tines (SOAR)**, and **Slack** to automate containment while keeping a human in the loop.
+
+When **“Yes”** is selected, Tines sends an **HTTP request to LimaCharlie’s API** to isolate the affected endpoint (sensor). This immediately limits the system’s network access, helping contain the threat and reduce the risk of lateral movement. After issuing the isolation command, the workflow sends another HTTP request to **check the isolation status**, making sure the action was successfully applied.
+
+Once the status is confirmed, Tines sends a message to **Slack** with the outcome, giving the security team real-time visibility into what happened and confirming that the endpoint is now contained.
+
+This setup mirrors how many SOC teams operate in real environments: **detections from an EDR trigger a SOAR workflow, an analyst approves the action, and automation handles the technical response**, with Slack used for clear and immediate communication.
 
 
 
