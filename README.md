@@ -261,6 +261,8 @@ This design ensures that high-impact actions are never taken blindly. It preserv
 ---
 ## Automated Endpoint Isolation (Analyst-Approved Response)
 
+![Yes_response_action](https://imgur.com/4BeJth6.png)
+
 In this part of the lab, I built a response path that runs when an analyst chooses **“Yes”** at the decision prompt. This workflow ties together **LimaCharlie (EDR)**, **Tines (SOAR)**, and **Slack** to automate containment while keeping a human in the loop.
 
 When **“Yes”** is selected, Tines sends an **HTTP request to LimaCharlie’s API** to isolate the affected endpoint (sensor). This immediately limits the system’s network access, helping contain the threat and reduce the risk of lateral movement. After issuing the isolation command, the workflow sends another HTTP request to **check the isolation status**, making sure the action was successfully applied.
