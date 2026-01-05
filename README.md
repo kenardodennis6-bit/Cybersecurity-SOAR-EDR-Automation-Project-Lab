@@ -322,6 +322,21 @@ This step demonstrated:
 
 By validating isolation through live network behavior, I ensured the response action was both functional and measurable, mirroring how containment would be verified in a real SOC environment.
 
-```
+---
+## Endpoint Isolation Confirmation – LimaCharlie Sensor Status
+
+![Isolation_limacharlie_validation](https://imgur.com/cwSiZHh.png)
+
+After triggering the isolation action through the automated SOAR workflow, I verified the result directly in **LimaCharlie** to confirm that the response was successfully enforced on the endpoint.
+
+In the LimaCharlie **Sensors → Overview** dashboard, the affected Windows endpoint (`mydfir-soar-edr`) shows its **Network Access** state as **Isolated**. This status indicates that the endpoint has been cut off from external network communication while still maintaining a management channel back to the EDR platform. The presence of the **“Rejoin Network”** option further confirms that the isolation is active and reversible by an analyst when appropriate.
+
+Key validation points from this step:
+- **EDR Platform:** LimaCharlie  
+- **Endpoint OS:** Windows x86 64-bit  
+- **Containment Action:** Network isolation  
+- **Verification Method:** Sensor status review within the EDR console  
+
+This check served as a final confirmation that the automated response executed correctly—not just at the workflow level, but also at the endpoint control level. By validating isolation inside the EDR platform itself, I ensured the action was applied reliably and would effectively limit potential threat activity in a real SOC environment.
 
 
