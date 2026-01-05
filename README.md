@@ -279,7 +279,7 @@ Before triggering the SOAR–EDR response workflow, I verified that the endpoint
 
 This step served as a **baseline check**. By confirming normal connectivity upfront, I could clearly demonstrate the impact of the automated response later in the lab. When the isolation action is triggered through **LimaCharlie (EDR)** and orchestrated by **Tines (SOAR)**, this same test can be repeated to show that network access is blocked as expected.
 
-Establishing a before-and-after comparison like this is a common SOC practice. It helps validate that containment actions—such as endpoint isolation—are actually enforced and working as intended, rather than assuming success based only on alerts or logs.
+Establishing a before-and-after comparison like this is a common SOC practice. It helps validate that containment actions, such as endpoint isolation, are actually enforced and working as intended, rather than assuming success based only on alerts or logs.
 ```
 
 
