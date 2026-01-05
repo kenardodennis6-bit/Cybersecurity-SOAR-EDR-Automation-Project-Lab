@@ -317,10 +317,10 @@ As shown in the screenshot, the ping responses transitioned from successful repl
 
 This step demonstrated:
 - **Effective EDR containment** using LimaCharlie’s isolation capability  
-- **End-to-end SOAR validation**, from detection → analyst decision → automated response  
+- **End to end SOAR validation**, from detection to  analyst decision to automated response  
 - **Real-world impact testing**, verifying controls at the operating system level rather than relying solely on dashboard status indicators  
 
-By validating isolation through live network behavior, I ensured the response action was both functional and measurable—mirroring how containment would be verified in a real SOC environment.
+By validating isolation through live network behavior, I ensured the response action was both functional and measurable, mirroring how containment would be verified in a real SOC environment.
 
 ```
 
