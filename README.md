@@ -271,5 +271,15 @@ Once the status is confirmed, Tines sends a message to **Slack** with the outcom
 
 This setup mirrors how many SOC teams operate in real environments: **detections from an EDR trigger a SOAR workflow, an analyst approves the action, and automation handles the technical response**, with Slack used for clear and immediate communication.
 
+---
+## Connectivity Baseline Test (Pre-Isolation)
+
+![Preisolation](https://imgur.com/C9zh6cw.png)
+Before triggering the SOAR–EDR response workflow, I verified that the endpoint had normal network connectivity. To do this, I ran a continuous (endless) `ping` from the Windows system to an external IP address. The consistent replies in the PowerShell window confirm that the machine could freely communicate over the network with no restrictions in place.
+
+This step served as a **baseline check**. By confirming normal connectivity upfront, I could clearly demonstrate the impact of the automated response later in the lab. When the isolation action is triggered through **LimaCharlie (EDR)** and orchestrated by **Tines (SOAR)**, this same test can be repeated to show that network access is blocked as expected.
+
+Establishing a before-and-after comparison like this is a common SOC practice. It helps validate that containment actions—such as endpoint isolation—are actually enforced and working as intended, rather than assuming success based only on alerts or logs.
+```
 
 
