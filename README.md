@@ -339,4 +339,21 @@ Key validation points from this step:
 
 This check served as a final confirmation that the automated response executed correctly—not just at the workflow level, but also at the endpoint control level. By validating isolation inside the EDR platform itself, I ensured the action was applied reliably and would effectively limit potential threat activity in a real SOC environment.
 
+---
+
+## Analyst Notification After Endpoint Isolation (Slack Alert)
+
+![Isolation_Slack_validation](https://imgur.com/ZckfYvs.png)
+Once the analyst selected **“Yes”** at the decision prompt to isolate the endpoint, the workflow automatically moved into its response phase. As part of that response, I configured **Tines** to send a real-time notification to **Slack**, ensuring the action was clearly communicated to the SOC channel.
+
+The screenshot shows the message posted in the **#alerts** Slack channel confirming that the Windows endpoint **mydfir-soar-edr** had been successfully isolated. The alert includes key context such as the affected host name and a clear call to investigate, which mirrors how isolation events are typically surfaced in an operational SOC environment.
+
+This step demonstrates how I tied automated response actions to analyst visibility:
+- **Tines** orchestrated the workflow and handled the logic after the analyst’s decision.
+- **LimaCharlie EDR** enforced the network isolation on the endpoint.
+- **Slack** was used as the communication layer to notify analysts immediately after containment occurred.
+
+By doing this, I ensured that isolation was not only executed but also clearly documented and communicated, reducing ambiguity and keeping the response team aligned on the current state of the incident.
+
+
 
